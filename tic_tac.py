@@ -26,6 +26,7 @@ class TicTacToe:
             self.buttons[index].config(text=self.player)
             if self.check_game(self.player):
                 messagebox.showinfo("Гра закінчена", "Ти переміг!")
+                self.reset_game()
             elif "" not in self.board:
                 messagebox.showinfo("Гра закінчена", "Нічия!!")
                 self.reset_game()
@@ -41,6 +42,7 @@ class TicTacToe:
         self.buttons[move].config(text=self.comp)
         if self.check_game(self.comp):
             messagebox.showinfo("Гра закінчена", "Комп переміг!")
+            self.reset_game()
         elif "" not in self.board:
             messagebox.showinfo("Гра закінчена", "Нічия!!")
             self.reset_game()
@@ -49,7 +51,7 @@ class TicTacToe:
         combos = [
             (0, 1, 2), (3, 4, 5), (6, 7, 8),
             (0, 3, 6), (1, 4, 7), (2, 5, 8),
-            (0, 5, 8), (2, 5, 6)
+            (0, 4, 8), (2, 4, 6)
         ]
         for a,b,c in combos:
             if self.board[a] == self.board[b] == self.board[c] == symbol:
